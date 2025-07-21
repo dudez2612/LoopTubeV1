@@ -1,0 +1,6 @@
+{
+  "name": "LoopTube modrn",
+  "description": "An application to loop YouTube videos and playlists with custom counts and delays.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

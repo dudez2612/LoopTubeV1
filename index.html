@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoopTube</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <main class="app-container">
+        <header>
+            <h1>LoopTube</h1>
+        </header>
+
+        <section id="account-container">
+            <div class="account-header">
+                <h2>Google Accounts (Optional)</h2>
+            </div>
+            <div id="account-list">
+                <div class="account-row">
+                    <input type="email" class="account-email-input" placeholder="Google Account Email" aria-label="Google Account Email 1">
+                    <div class="account-toggle">
+                        <label class="toggle-switch-label" for="enable-account-1">Enable</label>
+                        <input type="checkbox" id="enable-account-1" class="toggle-switch account-enable-toggle">
+                    </div>
+                </div>
+                <div class="account-row">
+                    <input type="email" class="account-email-input" placeholder="Google Account Email" aria-label="Google Account Email 2">
+                    <div class="account-toggle">
+                        <label class="toggle-switch-label" for="enable-account-2">Enable</label>
+                        <input type="checkbox" id="enable-account-2" class="toggle-switch account-enable-toggle">
+                    </div>
+                </div>
+                <div class="account-row">
+                    <input type="email" class="account-email-input" placeholder="Google Account Email" aria-label="Google Account Email 3">
+                    <div class="account-toggle">
+                        <label class="toggle-switch-label" for="enable-account-3">Enable</label>
+                        <input type="checkbox" id="enable-account-3" class="toggle-switch account-enable-toggle">
+                    </div>
+                </div>
+            </div>
+             <p class="account-note">Note: This app cannot log you in. Ensure you are logged into the correct account on YouTube in your browser.</p>
+            <button id="save-accounts-btn" class="btn btn-save">Save Accounts</button>
+        </section>
+
+        <div id="video-list-container">
+            <!-- Video rows will be dynamically inserted here -->
+        </div>
+
+        <div class="controls-main">
+            <button id="add-video-btn" class="btn btn-add" aria-label="Add new video or playlist row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Add Video/Playlist</span>
+            </button>
+        </div>
+
+        <section id="schedule-container">
+            <div class="schedule-header">
+                <h2>Schedule (Optional)</h2>
+                <div class="schedule-toggle">
+                    <label class="toggle-switch-label" for="enable-schedule">Enable</label>
+                    <input type="checkbox" id="enable-schedule" class="toggle-switch">
+                </div>
+            </div>
+            <div id="schedule-list">
+                <!-- 5 schedule rows -->
+                <div class="schedule-row">
+                    <div class="input-group">
+                        <label>START TIME</label>
+                        <input type="time" class="schedule-start-time" aria-label="Start time 1" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label>STOP TIME</label>
+                        <input type="time" class="schedule-stop-time" aria-label="Stop time 1" disabled>
+                    </div>
+                </div>
+                <div class="schedule-row">
+                     <div class="input-group">
+                        <label>START TIME</label>
+                        <input type="time" class="schedule-start-time" aria-label="Start time 2" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label>STOP TIME</label>
+                        <input type="time" class="schedule-stop-time" aria-label="Stop time 2" disabled>
+                    </div>
+                </div>
+                <div class="schedule-row">
+                     <div class="input-group">
+                        <label>START TIME</label>
+                        <input type="time" class="schedule-start-time" aria-label="Start time 3" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label>STOP TIME</label>
+                        <input type="time" class="schedule-stop-time" aria-label="Stop time 3" disabled>
+                    </div>
+                </div>
+                <div class="schedule-row">
+                     <div class="input-group">
+                        <label>START TIME</label>
+                        <input type="time" class="schedule-start-time" aria-label="Start time 4" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label>STOP TIME</label>
+                        <input type="time" class="schedule-stop-time" aria-label="Stop time 4" disabled>
+                    </div>
+                </div>
+                <div class="schedule-row">
+                     <div class="input-group">
+                        <label>START TIME</label>
+                        <input type="time" class="schedule-start-time" aria-label="Start time 5" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label>STOP TIME</label>
+                        <input type="time" class="schedule-stop-time" aria-label="Stop time 5" disabled>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="player-wrapper">
+            <p id="player-status">Status: Idle</p>
+        </div>
+
+        <footer class="controls-footer">
+            <button id="start-btn" class="btn btn-start">START</button>
+            <button id="stop-btn" class="btn btn-stop">STOP</button>
+        </footer>
+
+        <p class="disclaimer">
+            <strong>Disclaimer:</strong> This tool is for personal use. Using it to artificially inflate watch hours violates YouTube's policies and may result in penalties to your channel. Use responsibly.
+        </p>
+    </main>
+
+    <template id="video-row-template">
+        <div class="video-row" data-id="">
+            <div class="player-container">
+                <!-- YouTube player will be injected here -->
+            </div>
+            <div class="video-inputs">
+                <input type="url" class="video-url-input" placeholder="YouTube Video or Playlist URL">
+                <div class="param-inputs">
+                    <div class="input-group">
+                        <label>LOOP</label>
+                        <input type="number" class="loop-input" placeholder="∞" min="0" value="">
+                    </div>
+                    <div class="input-group">
+                        <label>DELAY (s)</label>
+                        <input type="number" class="delay-input" placeholder="0" min="0" value="">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-remove" aria-label="Remove this row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+    </template>
+
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
